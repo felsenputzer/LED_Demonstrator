@@ -1,0 +1,3 @@
+[submodule "DigitalGarden_Sensor_Basis/Lib"]
+	path = DigitalGarden_Sensor_Basis/Lib
+	url = https://github.com/felsenputzer/Libs.git
