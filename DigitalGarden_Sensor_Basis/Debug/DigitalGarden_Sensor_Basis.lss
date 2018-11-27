@@ -1,0 +1,426 @@
+
+DigitalGarden_Sensor_Basis.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  0000026e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000001fa  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000001  00800100  00800100  0000026e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000026e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002a0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000a0  00000000  00000000  000002dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000949  00000000  00000000  0000037c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007bc  00000000  00000000  00000cc5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000480  00000000  00000000  00001481  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000017c  00000000  00000000  00001904  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000042e  00000000  00000000  00001a80  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000001cb  00000000  00000000  00001eae  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000070  00000000  00000000  00002079  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	13 c0       	rjmp	.+38     	; 0x28 <__ctors_end>
+   2:	2d c0       	rjmp	.+90     	; 0x5e <__bad_interrupt>
+   4:	2c c0       	rjmp	.+88     	; 0x5e <__bad_interrupt>
+   6:	2b c0       	rjmp	.+86     	; 0x5e <__bad_interrupt>
+   8:	2a c0       	rjmp	.+84     	; 0x5e <__bad_interrupt>
+   a:	29 c0       	rjmp	.+82     	; 0x5e <__bad_interrupt>
+   c:	28 c0       	rjmp	.+80     	; 0x5e <__bad_interrupt>
+   e:	27 c0       	rjmp	.+78     	; 0x5e <__bad_interrupt>
+  10:	26 c0       	rjmp	.+76     	; 0x5e <__bad_interrupt>
+  12:	51 c0       	rjmp	.+162    	; 0xb6 <__vector_9>
+  14:	24 c0       	rjmp	.+72     	; 0x5e <__bad_interrupt>
+  16:	23 c0       	rjmp	.+70     	; 0x5e <__bad_interrupt>
+  18:	7e c0       	rjmp	.+252    	; 0x116 <__vector_12>
+  1a:	21 c0       	rjmp	.+66     	; 0x5e <__bad_interrupt>
+  1c:	20 c0       	rjmp	.+64     	; 0x5e <__bad_interrupt>
+  1e:	1f c0       	rjmp	.+62     	; 0x5e <__bad_interrupt>
+  20:	1e c0       	rjmp	.+60     	; 0x5e <__bad_interrupt>
+  22:	1d c0       	rjmp	.+58     	; 0x5e <__bad_interrupt>
+  24:	1c c0       	rjmp	.+56     	; 0x5e <__bad_interrupt>
+  26:	1b c0       	rjmp	.+54     	; 0x5e <__bad_interrupt>
+
+00000028 <__ctors_end>:
+  28:	11 24       	eor	r1, r1
+  2a:	1f be       	out	0x3f, r1	; 63
+  2c:	cf ef       	ldi	r28, 0xFF	; 255
+  2e:	d2 e0       	ldi	r29, 0x02	; 2
+  30:	de bf       	out	0x3e, r29	; 62
+  32:	cd bf       	out	0x3d, r28	; 61
+
+00000034 <__do_copy_data>:
+  34:	11 e0       	ldi	r17, 0x01	; 1
+  36:	a0 e0       	ldi	r26, 0x00	; 0
+  38:	b1 e0       	ldi	r27, 0x01	; 1
+  3a:	ea ef       	ldi	r30, 0xFA	; 250
+  3c:	f1 e0       	ldi	r31, 0x01	; 1
+  3e:	02 c0       	rjmp	.+4      	; 0x44 <__SREG__+0x5>
+  40:	05 90       	lpm	r0, Z+
+  42:	0d 92       	st	X+, r0
+  44:	a0 30       	cpi	r26, 0x00	; 0
+  46:	b1 07       	cpc	r27, r17
+  48:	d9 f7       	brne	.-10     	; 0x40 <__SREG__+0x1>
+
+0000004a <__do_clear_bss>:
+  4a:	21 e0       	ldi	r18, 0x01	; 1
+  4c:	a0 e0       	ldi	r26, 0x00	; 0
+  4e:	b1 e0       	ldi	r27, 0x01	; 1
+  50:	01 c0       	rjmp	.+2      	; 0x54 <.do_clear_bss_start>
+
+00000052 <.do_clear_bss_loop>:
+  52:	1d 92       	st	X+, r1
+
+00000054 <.do_clear_bss_start>:
+  54:	a1 30       	cpi	r26, 0x01	; 1
+  56:	b2 07       	cpc	r27, r18
+  58:	e1 f7       	brne	.-8      	; 0x52 <.do_clear_bss_loop>
+  5a:	1c d0       	rcall	.+56     	; 0x94 <main>
+  5c:	cc c0       	rjmp	.+408    	; 0x1f6 <_exit>
+
+0000005e <__bad_interrupt>:
+  5e:	d0 cf       	rjmp	.-96     	; 0x0 <__vectors>
+
+00000060 <port_init>:
+	timer1_init();
+}
+
+void port_init(void)
+{
+	DDRB = (1 << PB0) | (1 << PB1) | (1 << PB2) | (1 << PB3);		//LED for LED-Module
+  60:	8f e0       	ldi	r24, 0x0F	; 15
+  62:	84 b9       	out	0x04, r24	; 4
+	PORTB &= ~(1 << PB0) & ~(1 << PB1) & ~(1 << PB2) & ~(1 << PB3);
+  64:	85 b1       	in	r24, 0x05	; 5
+  66:	80 7f       	andi	r24, 0xF0	; 240
+  68:	85 b9       	out	0x05, r24	; 5
+	PORTA &= ~(1 << PIN_RS485_RE);		//Startup in reciever mode
+  6a:	82 b1       	in	r24, 0x02	; 2
+  6c:	8b 7f       	andi	r24, 0xFB	; 251
+  6e:	82 b9       	out	0x02, r24	; 2
+	DDRA |= (1 << PIN_RS485_RE);		//RE/!DE as output
+  70:	81 b1       	in	r24, 0x01	; 1
+  72:	84 60       	ori	r24, 0x04	; 4
+  74:	81 b9       	out	0x01, r24	; 1
+  76:	08 95       	ret
+
+00000078 <timer1_init>:
+	
+}
+
+void timer1_init(void)
+{
+	TIMSK1 |= (1 << TOIE1);
+  78:	ef e6       	ldi	r30, 0x6F	; 111
+  7a:	f0 e0       	ldi	r31, 0x00	; 0
+  7c:	80 81       	ld	r24, Z
+  7e:	81 60       	ori	r24, 0x01	; 1
+  80:	80 83       	st	Z, r24
+	TCCR1B |= (1 << CS11) | (1 << CS10);
+  82:	e1 e8       	ldi	r30, 0x81	; 129
+  84:	f0 e0       	ldi	r31, 0x00	; 0
+  86:	80 81       	ld	r24, Z
+  88:	83 60       	ori	r24, 0x03	; 3
+  8a:	80 83       	st	Z, r24
+  8c:	08 95       	ret
+
+0000008e <hw_init>:
+#include "main.h"
+#include "hwinit.h"
+
+void hw_init(void)
+{
+	port_init();
+  8e:	e8 df       	rcall	.-48     	; 0x60 <port_init>
+	timer1_init();
+  90:	f3 df       	rcall	.-26     	; 0x78 <timer1_init>
+  92:	08 95       	ret
+
+00000094 <main>:
+volatile uint8_t count = 0;
+volatile uint8_t cooldown = 1;
+
+int main(void)
+{
+	hw_init();
+  94:	fc df       	rcall	.-8      	; 0x8e <hw_init>
+	uart_init();
+  96:	8a d0       	rcall	.+276    	; 0x1ac <uart_init>
+	sei();
+  98:	78 94       	sei
+	
+	DDRB &= ~(1 << PB0);
+  9a:	84 b1       	in	r24, 0x04	; 4
+  9c:	8e 7f       	andi	r24, 0xFE	; 254
+  9e:	84 b9       	out	0x04, r24	; 4
+	PCICR |= (1 << PCIE1);
+  a0:	e8 e6       	ldi	r30, 0x68	; 104
+  a2:	f0 e0       	ldi	r31, 0x00	; 0
+  a4:	80 81       	ld	r24, Z
+  a6:	82 60       	ori	r24, 0x02	; 2
+  a8:	80 83       	st	Z, r24
+	PCMSK1 |= (1 << PCINT8);
+  aa:	ec e6       	ldi	r30, 0x6C	; 108
+  ac:	f0 e0       	ldi	r31, 0x00	; 0
+  ae:	80 81       	ld	r24, Z
+  b0:	81 60       	ori	r24, 0x01	; 1
+  b2:	80 83       	st	Z, r24
+  b4:	ff cf       	rjmp	.-2      	; 0xb4 <main+0x20>
+
+000000b6 <__vector_9>:
+
+    }
+}
+
+ISR(TIMER1_OVF_vect)
+{
+  b6:	1f 92       	push	r1
+  b8:	0f 92       	push	r0
+  ba:	0f b6       	in	r0, 0x3f	; 63
+  bc:	0f 92       	push	r0
+  be:	11 24       	eor	r1, r1
+  c0:	2f 93       	push	r18
+  c2:	3f 93       	push	r19
+  c4:	4f 93       	push	r20
+  c6:	5f 93       	push	r21
+  c8:	6f 93       	push	r22
+  ca:	7f 93       	push	r23
+  cc:	8f 93       	push	r24
+  ce:	9f 93       	push	r25
+  d0:	af 93       	push	r26
+  d2:	bf 93       	push	r27
+  d4:	ef 93       	push	r30
+  d6:	ff 93       	push	r31
+	uart_set_transmit();
+  d8:	5d d0       	rcall	.+186    	; 0x194 <uart_set_transmit>
+	uart_set_cmd(UART_MODE_TX_BYTE);
+  da:	8d e0       	ldi	r24, 0x0D	; 13
+  dc:	5f d0       	rcall	.+190    	; 0x19c <uart_set_cmd>
+
+	LINDAT = 0xA0 | (count & 0x0F);
+  de:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_end>
+  e2:	8f 70       	andi	r24, 0x0F	; 15
+  e4:	80 6a       	ori	r24, 0xA0	; 160
+  e6:	80 93 d2 00 	sts	0x00D2, r24	; 0x8000d2 <__EEPROM_REGION_LENGTH__+0x7f00d2>
+	count++;
+  ea:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_end>
+  ee:	8f 5f       	subi	r24, 0xFF	; 255
+  f0:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_end>
+}
+  f4:	ff 91       	pop	r31
+  f6:	ef 91       	pop	r30
+  f8:	bf 91       	pop	r27
+  fa:	af 91       	pop	r26
+  fc:	9f 91       	pop	r25
+  fe:	8f 91       	pop	r24
+ 100:	7f 91       	pop	r23
+ 102:	6f 91       	pop	r22
+ 104:	5f 91       	pop	r21
+ 106:	4f 91       	pop	r20
+ 108:	3f 91       	pop	r19
+ 10a:	2f 91       	pop	r18
+ 10c:	0f 90       	pop	r0
+ 10e:	0f be       	out	0x3f, r0	; 63
+ 110:	0f 90       	pop	r0
+ 112:	1f 90       	pop	r1
+ 114:	18 95       	reti
+
+00000116 <__vector_12>:
+		//count++;
+	//}
+//}
+
+ISR(LIN_TC_vect)
+{
+ 116:	1f 92       	push	r1
+ 118:	0f 92       	push	r0
+ 11a:	0f b6       	in	r0, 0x3f	; 63
+ 11c:	0f 92       	push	r0
+ 11e:	11 24       	eor	r1, r1
+ 120:	2f 93       	push	r18
+ 122:	3f 93       	push	r19
+ 124:	4f 93       	push	r20
+ 126:	5f 93       	push	r21
+ 128:	6f 93       	push	r22
+ 12a:	7f 93       	push	r23
+ 12c:	8f 93       	push	r24
+ 12e:	9f 93       	push	r25
+ 130:	af 93       	push	r26
+ 132:	bf 93       	push	r27
+ 134:	ef 93       	push	r30
+ 136:	ff 93       	push	r31
+	uint8_t rxByte = 0;
+	if(LINSIR & (1 << LIDOK))
+ 138:	e9 ec       	ldi	r30, 0xC9	; 201
+ 13a:	f0 e0       	ldi	r31, 0x00	; 0
+ 13c:	80 81       	ld	r24, Z
+	{
+			
+	}
+	if(LINSIR & (1 << LTXOK))
+ 13e:	80 81       	ld	r24, Z
+ 140:	81 ff       	sbrs	r24, 1
+ 142:	08 c0       	rjmp	.+16     	; 0x154 <__vector_12+0x3e>
+	{
+		uart_set_cmd(UART_MODE_BYTE_TRANSFER);
+ 144:	8c e0       	ldi	r24, 0x0C	; 12
+ 146:	2a d0       	rcall	.+84     	; 0x19c <uart_set_cmd>
+		uart_set_recieve();
+ 148:	21 d0       	rcall	.+66     	; 0x18c <uart_set_recieve>
+		LINSIR |= (1 << LTXOK);
+ 14a:	e9 ec       	ldi	r30, 0xC9	; 201
+ 14c:	f0 e0       	ldi	r31, 0x00	; 0
+ 14e:	80 81       	ld	r24, Z
+ 150:	82 60       	ori	r24, 0x02	; 2
+ 152:	80 83       	st	Z, r24
+		//uart_set_cmd(UART_MODE_RX_BYTE);
+	}
+	if(LINSIR & (1 << LRXOK))
+ 154:	80 91 c9 00 	lds	r24, 0x00C9	; 0x8000c9 <__EEPROM_REGION_LENGTH__+0x7f00c9>
+ 158:	80 ff       	sbrs	r24, 0
+ 15a:	07 c0       	rjmp	.+14     	; 0x16a <__vector_12+0x54>
+	{
+		rxByte = LINDAT;
+ 15c:	80 91 d2 00 	lds	r24, 0x00D2	; 0x8000d2 <__EEPROM_REGION_LENGTH__+0x7f00d2>
+		LINSIR |= (1 << LRXOK);
+ 160:	e9 ec       	ldi	r30, 0xC9	; 201
+ 162:	f0 e0       	ldi	r31, 0x00	; 0
+ 164:	80 81       	ld	r24, Z
+ 166:	81 60       	ori	r24, 0x01	; 1
+ 168:	80 83       	st	Z, r24
+		{
+			//PORTB = (PORTB & 0xF0) | (rxByte & 0x0F);
+			rxByte = 0;
+		}
+	}
+ 16a:	ff 91       	pop	r31
+ 16c:	ef 91       	pop	r30
+ 16e:	bf 91       	pop	r27
+ 170:	af 91       	pop	r26
+ 172:	9f 91       	pop	r25
+ 174:	8f 91       	pop	r24
+ 176:	7f 91       	pop	r23
+ 178:	6f 91       	pop	r22
+ 17a:	5f 91       	pop	r21
+ 17c:	4f 91       	pop	r20
+ 17e:	3f 91       	pop	r19
+ 180:	2f 91       	pop	r18
+ 182:	0f 90       	pop	r0
+ 184:	0f be       	out	0x3f, r0	; 63
+ 186:	0f 90       	pop	r0
+ 188:	1f 90       	pop	r1
+ 18a:	18 95       	reti
+
+0000018c <uart_set_recieve>:
+	}
+}
+
+void uart_set_recieve(void)
+{
+	PORTA &= ~(1 << PIN_RS485_RE);
+ 18c:	82 b1       	in	r24, 0x02	; 2
+ 18e:	8b 7f       	andi	r24, 0xFB	; 251
+ 190:	82 b9       	out	0x02, r24	; 2
+ 192:	08 95       	ret
+
+00000194 <uart_set_transmit>:
+}
+
+void uart_set_transmit(void)
+{
+	PORTA |= (1 << PIN_RS485_RE);
+ 194:	82 b1       	in	r24, 0x02	; 2
+ 196:	84 60       	ori	r24, 0x04	; 4
+ 198:	82 b9       	out	0x02, r24	; 2
+ 19a:	08 95       	ret
+
+0000019c <uart_set_cmd>:
+}
+
+void uart_set_cmd(uint8_t mode)
+{
+	LINCR = (LINCR & 0xF0) | (mode & 0x0F);
+ 19c:	e8 ec       	ldi	r30, 0xC8	; 200
+ 19e:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a0:	90 81       	ld	r25, Z
+ 1a2:	90 7f       	andi	r25, 0xF0	; 240
+ 1a4:	8f 70       	andi	r24, 0x0F	; 15
+ 1a6:	89 2b       	or	r24, r25
+ 1a8:	80 83       	st	Z, r24
+ 1aa:	08 95       	ret
+
+000001ac <uart_init>:
+
+void uart_init(void)
+{
+	uint16_t ldiv_value = (F_CPU / (BIT_SAMPLES * BAUD_RATE)) - 1;
+	
+	LINBRRH |= (uint8_t) (ldiv_value >> 8);
+ 1ac:	ee ec       	ldi	r30, 0xCE	; 206
+ 1ae:	f0 e0       	ldi	r31, 0x00	; 0
+ 1b0:	80 81       	ld	r24, Z
+ 1b2:	80 83       	st	Z, r24
+	LINBRRL |= (uint8_t) (ldiv_value);
+ 1b4:	ed ec       	ldi	r30, 0xCD	; 205
+ 1b6:	f0 e0       	ldi	r31, 0x00	; 0
+ 1b8:	80 81       	ld	r24, Z
+ 1ba:	89 61       	ori	r24, 0x19	; 25
+ 1bc:	80 83       	st	Z, r24
+	
+	LINBTR |= (BIT_SAMPLES & 0x3F);
+ 1be:	ec ec       	ldi	r30, 0xCC	; 204
+ 1c0:	f0 e0       	ldi	r31, 0x00	; 0
+ 1c2:	80 81       	ld	r24, Z
+ 1c4:	80 61       	ori	r24, 0x10	; 16
+ 1c6:	80 83       	st	Z, r24
+	LINBTR |= (1 << LDISR);
+ 1c8:	80 81       	ld	r24, Z
+ 1ca:	80 68       	ori	r24, 0x80	; 128
+ 1cc:	80 83       	st	Z, r24
+	
+	LINCR |= (1 << LENA);		//Enable UART Controller
+ 1ce:	e8 ec       	ldi	r30, 0xC8	; 200
+ 1d0:	f0 e0       	ldi	r31, 0x00	; 0
+ 1d2:	80 81       	ld	r24, Z
+ 1d4:	88 60       	ori	r24, 0x08	; 8
+ 1d6:	80 83       	st	Z, r24
+	LINCR |= (1 << LCONF1);		//Set to 8bit, odd parity, 1 stopbit
+ 1d8:	80 81       	ld	r24, Z
+ 1da:	80 62       	ori	r24, 0x20	; 32
+ 1dc:	80 83       	st	Z, r24
+	
+	uart_set_recieve();
+ 1de:	d6 df       	rcall	.-84     	; 0x18c <uart_set_recieve>
+	uart_set_cmd(UART_MODE_RX_BYTE);
+ 1e0:	8e e0       	ldi	r24, 0x0E	; 14
+ 1e2:	dc df       	rcall	.-72     	; 0x19c <uart_set_cmd>
+	LINENIR |= (1 <<LENTXOK);
+ 1e4:	ea ec       	ldi	r30, 0xCA	; 202
+ 1e6:	f0 e0       	ldi	r31, 0x00	; 0
+ 1e8:	80 81       	ld	r24, Z
+ 1ea:	82 60       	ori	r24, 0x02	; 2
+ 1ec:	80 83       	st	Z, r24
+	LINENIR |= (1 <<LENRXOK);
+ 1ee:	80 81       	ld	r24, Z
+ 1f0:	81 60       	ori	r24, 0x01	; 1
+ 1f2:	80 83       	st	Z, r24
+ 1f4:	08 95       	ret
+
+000001f6 <_exit>:
+ 1f6:	f8 94       	cli
+
+000001f8 <__stop_program>:
+ 1f8:	ff cf       	rjmp	.-2      	; 0x1f8 <__stop_program>
