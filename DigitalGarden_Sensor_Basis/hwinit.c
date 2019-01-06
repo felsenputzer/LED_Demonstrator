@@ -7,7 +7,7 @@
 
 #include "main.h"
 #include "hwinit.h"
-#include <COMM/telegram.h>
+#include "Lib/COMM/telegram.h"
 
 void hw_init(void)
 {

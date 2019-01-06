@@ -7,8 +7,8 @@
 
 #include "main.h"
 #include "hwinit.h"
-#include <COMM/uart_attiny87.h>
-#include <COMM/telegram.h>
+#include "Lib/COMM/uart_attiny87.h"
+#include "Lib/COMM/telegram.h"
 #include <avr/interrupt.h>
 
 volatile uint8_t count = 0;

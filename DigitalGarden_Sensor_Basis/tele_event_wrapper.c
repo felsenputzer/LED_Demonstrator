@@ -12,16 +12,16 @@ void tele_check_event(eTele_hanlder_event tele_event)
 	switch(tele_event)
 	{
 		case tele_check_event_group:
-			PORTB ^= (1 << PB0);
+			PORTB |= (1 << PB0);
 			break;
 		case tele_check_event_id:
-			PORTB ^= (1 << PB0);
+			PORTB |= (1 << PB1);
 			break;
 		case tele_check_event_checksum:
-			PORTB ^= (1 << PB0);
+			PORTB |= (1 << PB2);
 			break;
 		case tele_check_event_unknown_req:
-			PORTB ^= (1 << PB0);
+			PORTB |= (1 << PB3);
 			break;
 	}
 }
