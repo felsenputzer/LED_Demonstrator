@@ -10,7 +10,6 @@
 #include <COMM/uart_attiny87.h>
 #include <COMM/telegram.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
 
 volatile uint8_t count = 0;
 volatile uint8_t cooldown = 1;

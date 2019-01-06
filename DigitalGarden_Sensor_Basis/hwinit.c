@@ -7,11 +7,13 @@
 
 #include "main.h"
 #include "hwinit.h"
+#include <COMM/telegram.h>
 
 void hw_init(void)
 {
 	port_init();
 	timer1_init();
+	setmydevice(GRP_ID_TEST, DEVICE_ID_LED_TEST);
 }
 
 void port_init(void)
