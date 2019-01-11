@@ -13,7 +13,8 @@
 #include "Lib/COMM/telegram.h"
 #include "Lib/COMM/kennungen.h"
 
-void tele_check_event(eTele_hanlder_event tele_event);
-void tele_comm_event(uint8_t tele_event, tele_fixed *tele_out);
+void wrapper_check_event(eTele_hanlder_event tele_event);
+uint8_t wrapper_comm_event(eTeleType tele_event,tele_fixed *tele_in, tele_fixed *tele_out);
+void wrapper_init(void);
 
 #endif /* TELE_EVENT_WRAPPER_H_ */

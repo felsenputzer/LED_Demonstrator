@@ -9,6 +9,7 @@
 #include "hwinit.h"
 #include "Lib/COMM/uart_attiny87.h"
 #include "Lib/COMM/telegram.h"
+#include "tele_event_wrapper.h"
 #include <avr/interrupt.h>
 
 volatile uint8_t count = 0;
@@ -20,6 +21,7 @@ int main(void)
 {
 	hw_init();
 	uart_init();
+	wrapper_init();
 	sei();
 	
     while (1) 
